@@ -1,6 +1,6 @@
 import { AssetTypes } from '@/lib/enums'
 
-interface IAssetSize {
+export interface IAssetSize {
   width: number
   height: number
 }
@@ -21,4 +21,9 @@ export interface IAsset extends IBasicAsset {
   zIndex: number
   size: IAssetSize
   position: IAssetPosition
+  aspectRatio: number
+  draggable?: boolean
+  playing?: boolean
+  progress?: number
+  duration?: number
 }

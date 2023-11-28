@@ -1,5 +1,7 @@
 export { default as AssetContainer } from './AssetContainer'
 export { default as AssetListItem } from './AssetListItem'
+export { default as Canvas } from './Canvas'
 export { default as ImageAsset } from './ImageAsset'
+export { default as Sidebar } from './Sidebar'
 export { default as UrlInput } from './UrlInput'
 export { default as VideoAsset } from './VideoAsset'

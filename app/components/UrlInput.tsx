@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react'
 import { Box, Button, InputAdornment, TextField } from '@mui/material'
 import { Link } from '@mui/icons-material'
@@ -56,11 +57,27 @@ const UrlInput = () => {
       url: 'https://sjc1.vultrobjects.com/moments/ads/square-emoji.png',
       type: AssetTypes.image
     })
+    addAsset({
+      url: 'https://ewr1.vultrobjects.com/moments/videos/car-parts.mp4',
+      type: AssetTypes.video
+    })
+    addAsset({
+      url: 'https://s3.us-east-2.amazonaws.com/vb-dev-media/moments/ads/reupload/vbqr.png',
+      type: AssetTypes.image
+    })
+    addAsset({
+      url: 'https://s3.us-east-2.amazonaws.com/vb-dev-media/moments/ads/reupload/coca-cola-short.mp4',
+      type: AssetTypes.video
+    })
+    addAsset({
+      url: 'https://s3.us-east-2.amazonaws.com/vb-dev-media/moments/ads/reupload/coca-cola-banner-right.jpg',
+      type: AssetTypes.image
+    })
   }, [])
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ display: 'flex', width: '100%', alignItems: 'center', mb: 2 }}>
+      <Box sx={{ display: 'flex', width: '100%', alignItems: 'center', mb: 1 }}>
         <TextField
           value={inputValue}
           onChange={onInputChange}

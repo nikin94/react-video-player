@@ -1,41 +1,43 @@
+'use client'
 import Image from 'next/image'
 import { Box } from '@mui/material'
 import { getAspectRatio } from '@/helpers'
 import { useAssetsStore } from '@/store/AssetsStore'
-import { IAsset } from '@/lib/interfaces'
+import { IAsset, IAssetSize } from '@/lib/interfaces'
 import constants from '@/lib/constants'
 
 const { IMAGE_BASE_WIDTH } = constants
 
 const ImageAsset = ({
   asset,
-  isResizing
+  isResizing,
+  localSize
 }: {
   asset: IAsset
   isResizing: boolean
+  localSize: IAssetSize
 }) => {
   const { id, name, url, size } = asset
   const setAssetSize = useAssetsStore(s => s.setAssetSize)
+  const setAssetAspectRatio = useAssetsStore(s => s.setAssetAspectRatio)
 
   return (
     <Box
       sx={{
         position: 'relative',
-        width: size.width,
-        height: size.height
+        cursor: 'move',
+        width: isResizing && localSize.width ? localSize.width : size.width,
+        height: isResizing && localSize.height ? localSize.height : size.height
       }}
     >
       <Image
         onLoad={e => {
-          setAssetSize(
-            id,
-            IMAGE_BASE_WIDTH,
-            IMAGE_BASE_WIDTH /
-              getAspectRatio(
-                e.currentTarget.naturalWidth,
-                e.currentTarget.naturalHeight
-              )
+          const AR = getAspectRatio(
+            e.currentTarget.naturalWidth,
+            e.currentTarget.naturalHeight
           )
+          setAssetSize(id, IMAGE_BASE_WIDTH, IMAGE_BASE_WIDTH / AR)
+          setAssetAspectRatio(id, AR)
         }}
         loader={({ src }) => src}
         fill
