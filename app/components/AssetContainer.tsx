@@ -7,7 +7,14 @@ import { AssetTypes } from '@/lib/enums'
 import { useAssetsStore } from '@/store/AssetsStore'
 
 const AssetContainer = ({ asset }: { asset: IAsset }) => {
-  const { id, type, position, draggable } = asset
+  const {
+    id,
+    type,
+    position,
+    draggable,
+    frameAspectRatioUnlocked,
+    borderDisabled
+  } = asset
   const [isResizing, setIsResizing] = useState(false)
   const [localSize, setLocalSize] = useState({ width: 0, height: 0 })
 
@@ -17,11 +24,11 @@ const AssetContainer = ({ asset }: { asset: IAsset }) => {
   return (
     <Rnd
       bounds='parent'
-      lockAspectRatio
+      lockAspectRatio={!frameAspectRatioUnlocked}
       style={{
         zIndex: asset.zIndex,
         cursor: 'default',
-        border: '1px solid #333',
+        outline: borderDisabled ? 'none' : '1px solid #333',
         overflow: 'hidden'
       }}
       disableDragging={type === AssetTypes.video && !draggable}

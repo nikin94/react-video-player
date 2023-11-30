@@ -18,6 +18,8 @@ interface IState {
   setAssetProgress: (id: string, progress: number) => void
   setAssetDuration: (id: string, duration: number) => void
 
+  toggleBorderDisabled: (id: string) => void
+  toggleFrameLock: (id: string) => void
   toggleVideoPlay: (id: string) => void
   stopVideo: (id: string) => void
   playVideo: (id: string) => void
@@ -96,6 +98,22 @@ export const useAssetsStore = create<IState>()((set, get) => ({
   setAssetDuration: (id: string, duration: number) => {
     set(state => ({
       assets: state.assets.map(a => (a.id === id ? { ...a, duration } : a))
+    }))
+  },
+  toggleBorderDisabled: (id: string) => {
+    set(state => ({
+      assets: state.assets.map(a =>
+        a.id === id ? { ...a, borderDisabled: !a.borderDisabled } : a
+      )
+    }))
+  },
+  toggleFrameLock: (id: string) => {
+    set(state => ({
+      assets: state.assets.map(a =>
+        a.id === id
+          ? { ...a, frameAspectRatioUnlocked: !a.frameAspectRatioUnlocked }
+          : a
+      )
     }))
   },
   toggleVideoPlay: (id: string) => {

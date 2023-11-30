@@ -86,8 +86,8 @@ const UrlInput = () => {
           error={!!error}
           helperText={error}
           InputProps={{
-            startAdornment: (
-              <InputAdornment position='start'>
+            endAdornment: (
+              <InputAdornment position='end'>
                 <Button
                   type='submit'
                   onClick={onSubmit}

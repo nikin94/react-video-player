@@ -26,4 +26,6 @@ export interface IAsset extends IBasicAsset {
   playing?: boolean
   progress?: number
   duration?: number
+  borderDisabled?: boolean
+  frameAspectRatioUnlocked?: boolean
 }
