@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Box, Button, InputAdornment, TextField } from '@mui/material'
 import { Link } from '@mui/icons-material'
 import isURL from 'validator/lib/isURL'
@@ -43,37 +43,6 @@ const UrlInput = () => {
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
   }
-
-  useEffect(() => {
-    addAsset({
-      url: 'https://s3.us-east-2.amazonaws.com/vb-dev-media/moments/ads/reupload/avatar2-trailer-short.mp4',
-      type: AssetTypes.video
-    })
-    addAsset({
-      url: 'https://sjc1.vultrobjects.com/moments/demo/retail/1.jpg',
-      type: AssetTypes.image
-    })
-    addAsset({
-      url: 'https://sjc1.vultrobjects.com/moments/ads/square-emoji.png',
-      type: AssetTypes.image
-    })
-    addAsset({
-      url: 'https://ewr1.vultrobjects.com/moments/videos/car-parts.mp4',
-      type: AssetTypes.video
-    })
-    addAsset({
-      url: 'https://s3.us-east-2.amazonaws.com/vb-dev-media/moments/ads/reupload/vbqr.png',
-      type: AssetTypes.image
-    })
-    addAsset({
-      url: 'https://s3.us-east-2.amazonaws.com/vb-dev-media/moments/ads/reupload/coca-cola-short.mp4',
-      type: AssetTypes.video
-    })
-    addAsset({
-      url: 'https://s3.us-east-2.amazonaws.com/vb-dev-media/moments/ads/reupload/coca-cola-banner-right.jpg',
-      type: AssetTypes.image
-    })
-  }, [])
 
   return (
     <form onSubmit={handleSubmit}>
